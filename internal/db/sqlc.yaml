@@ -1,0 +1,23 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "query/"
+    schema: "migrations/"
+    gen:
+      go:
+        package: "db"
+        out: "generated"
+        sql_package: "pgx/v5"
+        emit_json_tags: true
+        emit_interface: true
+        emit_prepared_queries: true
+        emit_exact_table_names: false
+        emit_empty_slices: true
+        json_tags_case_style: "camel"
+        output_models_file_name: "models"
+        output_querier_file_name: "querier"
+        overrides:
+          - column: "indexers.params"
+            go_type: "json.RawMessage"
+          - column: "indexing_logs.details"
+            go_type: "json.RawMessage"
