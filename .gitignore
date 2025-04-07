@@ -23,6 +23,5 @@ go.work.sum
 
 # env file
 .env
-server
 
 info.txt
